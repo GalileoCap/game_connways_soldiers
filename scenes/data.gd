@@ -7,6 +7,8 @@ const data_path= 'user://connway_data.cfg'
 #DATA
 var first= true
 var record= 0
+var moves= 0
+var style= 'checkers'
 
 #******************************************************************************
 #UTILS
@@ -14,7 +16,9 @@ func get_data():
 	var r= {
 		'data': {
 			'first': first,
-			'record': record
+			'record': record,
+			'moves': moves,
+			'style': style,
 			},
 	}
 	return r
@@ -42,7 +46,7 @@ func save_data():
 func load_data():
 	var config= ConfigFile.new()
 	var err= config.load(data_path)
-	print(err)
+	
 	if not err == OK:
 		print('CREATING SAVEFILE')
 		save_data()
@@ -61,5 +65,6 @@ func wipe_data():
 	
 	first= true
 	record= 0
+	moves= 0
 	
 	_ready()

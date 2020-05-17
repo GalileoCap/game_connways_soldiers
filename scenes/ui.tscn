@@ -1,14 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/ui.gd" type="Script" id=1]
+[ext_resource path="res://resources/tutorial/3.png" type="Texture" id=2]
+[ext_resource path="res://resources/tutorial/2.png" type="Texture" id=3]
+[ext_resource path="res://resources/tutorial/1.png" type="Texture" id=4]
+[ext_resource path="res://resources/tutorial/4.png" type="Texture" id=5]
 
 [node name="ui" type="Node2D"]
+pause_mode = 2
+z_index = 5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="panel" type="Panel" parent="."]
+[node name="controls" type="Panel" parent="."]
 margin_top = 976.0
 margin_right = 720.0
 margin_bottom = 1283.0
@@ -16,10 +22,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="columns" type="Node2D" parent="panel"]
+[node name="columns" type="Node2D" parent="controls"]
 position = Vector2( 120, 32 )
 
-[node name="label" type="Label" parent="panel/columns"]
+[node name="label" type="Label" parent="controls/columns"]
 margin_left = 32.0
 margin_right = 97.0
 margin_bottom = 14.0
@@ -28,7 +34,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="add_columns" type="Button" parent="panel/columns"]
+[node name="add_columns" type="Button" parent="controls/columns"]
 margin_left = 8.0
 margin_top = 32.0
 margin_right = 128.0
@@ -38,17 +44,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="remove_columns" type="Button" parent="panel/columns"]
+[node name="remove_columns" type="Button" parent="controls/columns"]
 margin_left = 8.0
 margin_top = 112.0
 margin_right = 128.0
 margin_bottom = 172.0
 text = "-"
 
-[node name="rows" type="Node2D" parent="panel"]
+[node name="rows" type="Node2D" parent="controls"]
 position = Vector2( 448, 32 )
 
-[node name="label" type="Label" parent="panel/rows"]
+[node name="label" type="Label" parent="controls/rows"]
 margin_left = 48.0
 margin_right = 87.0
 margin_bottom = 31.0
@@ -58,7 +64,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="add_rows" type="Button" parent="panel/rows"]
+[node name="add_rows" type="Button" parent="controls/rows"]
 margin_left = 8.0
 margin_top = 32.0
 margin_right = 128.0
@@ -68,38 +74,263 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="remove_rows" type="Button" parent="panel/rows"]
+[node name="remove_rows" type="Button" parent="controls/rows"]
 margin_left = 8.0
 margin_top = 112.0
 margin_right = 128.0
 margin_bottom = 172.0
 text = "-"
 
-[node name="rules" type="Button" parent="panel"]
+[node name="title" type="Label" parent="controls"]
+margin_left = 288.0
+margin_top = 88.0
+margin_right = 408.0
+margin_bottom = 102.0
+text = " CURRENT RECORD"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="record" type="Label" parent="controls"]
+margin_left = 344.0
+margin_top = 136.0
+margin_right = 352.0
+margin_bottom = 150.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="moves" type="Label" parent="controls"]
+margin_left = 312.0
+margin_top = 176.0
+margin_right = 388.0
+margin_bottom = 190.0
+grow_horizontal = 2
+text = "IN 0 MOVES"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rules" type="Button" parent="controls"]
 margin_left = 24.0
 margin_top = 248.0
 margin_right = 128.0
 margin_bottom = 292.0
-text = "RULES"
+text = "RULES/TUTORIAL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="restart" type="Button" parent="panel"]
+[node name="restart" type="Button" parent="controls"]
 margin_left = 576.0
 margin_top = 248.0
 margin_right = 694.0
 margin_bottom = 292.0
-text = "RESTART"
+text = "RESET BOARD"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="menu" type="Button" parent="panel"]
+[node name="menu" type="Button" parent="controls"]
 margin_left = 288.0
 margin_top = 248.0
 margin_right = 392.0
 margin_bottom = 296.0
 text = "MENU"
-[connection signal="pressed" from="panel/rules" to="." method="rules"]
-[connection signal="pressed" from="panel/menu" to="." method="menu"]
+
+[node name="menu" type="Panel" parent="."]
+margin_left = 64.0
+margin_top = 448.0
+margin_right = 640.0
+margin_bottom = 768.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="menu"]
+margin_left = 184.0
+margin_top = 16.0
+margin_right = 366.0
+margin_bottom = 30.0
+text = "JOHN CONNWAY'S SOLDIERS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save" type="Button" parent="menu"]
+visible = false
+margin_left = 216.0
+margin_top = 48.0
+margin_right = 336.0
+margin_bottom = 88.0
+text = "SAVE BOARD"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="style" type="Label" parent="menu"]
+visible = false
+margin_left = 232.0
+margin_top = 104.0
+margin_right = 325.0
+margin_bottom = 118.0
+text = "CHOOSE STYLE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="style_soldiers" type="Button" parent="menu"]
+visible = false
+margin_left = 96.0
+margin_top = 144.0
+margin_right = 108.0
+margin_bottom = 164.0
+text = "SOLDIERS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="style_checkers" type="Button" parent="menu"]
+visible = false
+margin_left = 240.0
+margin_top = 144.0
+margin_right = 315.0
+margin_bottom = 164.0
+text = "CHECKERS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="style_cats" type="Button" parent="menu"]
+visible = false
+margin_left = 376.0
+margin_top = 144.0
+margin_right = 494.0
+margin_bottom = 164.0
+text = "CATS AND DOGS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="delete" type="Button" parent="menu"]
+margin_left = 216.0
+margin_top = 200.0
+margin_right = 336.0
+margin_bottom = 240.0
+text = "WIPE DATA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="close" type="Button" parent="menu"]
+margin_left = 248.0
+margin_top = 280.0
+margin_right = 300.0
+margin_bottom = 300.0
+text = "CLOSE"
+
+[node name="version" type="Label" parent="menu"]
+margin_left = 16.0
+margin_top = 296.0
+margin_right = 118.0
+margin_bottom = 310.0
+text = "ver 1.5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="confirmation" type="Panel" parent="menu"]
+margin_left = 192.0
+margin_top = -120.0
+margin_right = 360.0
+margin_bottom = -48.0
+
+[node name="sure" type="Label" parent="menu/confirmation"]
+margin_left = 40.0
+margin_top = 16.0
+margin_right = 127.0
+margin_bottom = 30.0
+text = "Are you sure?"
+
+[node name="yes" type="Button" parent="menu/confirmation"]
+margin_left = 24.0
+margin_top = 40.0
+margin_right = 58.0
+margin_bottom = 60.0
+text = "YES"
+
+[node name="no" type="Button" parent="menu/confirmation"]
+margin_left = 96.0
+margin_top = 40.0
+margin_right = 129.0
+margin_bottom = 60.0
+text = "NO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rules" type="Panel" parent="."]
+margin_left = 72.0
+margin_top = 456.0
+margin_right = 632.0
+margin_bottom = 696.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Sprite" parent="rules"]
+position = Vector2( 92, 144 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="2" type="Sprite" parent="rules"]
+position = Vector2( 212, 144 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+
+[node name="3" type="Sprite" parent="rules"]
+position = Vector2( 340, 144 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+
+[node name="4" type="Sprite" parent="rules"]
+position = Vector2( 456, 144 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="5" type="Label" parent="rules"]
+margin_left = 96.0
+margin_top = 8.0
+margin_right = 478.0
+margin_bottom = 39.0
+text = "     The objective is to get one of your soldiers to the top
+Tap on your soldiers to select them and tap on a free slot to
+              move them vertically or horizontally"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="6" type="Label" parent="rules"]
+margin_left = 180.0
+margin_top = 72.0
+margin_right = 382.0
+margin_bottom = 86.0
+text = "Can you beat my record of four?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="close" type="Button" parent="rules"]
+margin_left = 248.0
+margin_top = 208.0
+margin_right = 300.0
+margin_bottom = 228.0
+text = "CLOSE"
+[connection signal="pressed" from="controls/rules" to="." method="rules"]
+[connection signal="pressed" from="controls/menu" to="." method="menu"]
+[connection signal="pressed" from="menu/delete" to="." method="delete_a"]
+[connection signal="pressed" from="menu/close" to="." method="menu"]
+[connection signal="pressed" from="menu/confirmation/yes" to="." method="delete_b"]
+[connection signal="pressed" from="menu/confirmation/no" to="." method="delete_a"]
+[connection signal="pressed" from="rules/close" to="." method="rules"]
